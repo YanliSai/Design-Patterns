@@ -3,7 +3,7 @@ package factory;
 /**
  * The Factory Method Pattern "defines an interface for creating an object, but
  * lets subclasses decide which class to instantiate. Factory Method lets a
- * class defer instantiation to subclasses." [1]
+ * class defer instantiation to subclasses.[1]" 
  * 
  * [1] Gamma, Erich, et al. Design patterns: elements of reusable
  * object-oriented software. Pearson Education, 1994.
@@ -17,13 +17,20 @@ public class FactoryMethod {
     private static final int TYPE_TWO = 2;
 
     /*
-     * Creator contains the implementation for all the methods to manipulate
-     * products except for the factory method.
+     * The Creator class contains the implementation for all the methods to
+     * manipulate products EXCEPT for the factory method.
+     * 
+     * e.g. PizzaStore
      */
     abstract class Creator {
-        // The factory method that all Creator subclasses must implement
+        /*
+         *  The factory method that all Creator subclasses must implement
+         *  
+         *  e.g. createPizza()
+         */
         abstract Product factoryMethod(int productType);
 
+        // e.g. orderPizza()
         void anOperation(int productType) {
             Product product = factoryMethod(productType);
             product.doSomething();
@@ -31,8 +38,10 @@ public class FactoryMethod {
     }
 
     /*
-     * The ConcreteCreator creates concrete products. It is the only class
-     * that knows how to create these products
+     * The ConcreteCreator creates concrete products. It is the only class that
+     * knows how to create these products
+     * 
+     * e.g. NYPizzaStore
      */
     class ConcreteCreator extends Creator {
 
@@ -48,12 +57,14 @@ public class FactoryMethod {
         }
     }
 
+    // e.g. Pizza
     abstract class Product {
         void doSomething() {
             System.out.println("I'm doing sth...");
         }
     }
 
+    // e.g. NYStyleCheesePizza
     class ConcreteProductOne extends Product {
         // Might override doSomething
         @Override
@@ -62,10 +73,11 @@ public class FactoryMethod {
         }
     }
 
+    // e.g. ChicagoStyleCheesePizza 
     class ConcreteProductTwo extends Product {
         // Might add new operations
         void doAnotherThing() {
-            
+
         }
     }
 }
