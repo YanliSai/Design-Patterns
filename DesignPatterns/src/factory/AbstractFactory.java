@@ -84,7 +84,7 @@ class ProductA2 extends ProductA {
     @Override
     void prepare() {
         // TODO Auto-generated method stub
-        
+
     }
     
 }
