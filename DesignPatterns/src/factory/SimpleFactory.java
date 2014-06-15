@@ -4,6 +4,8 @@ package factory;
  * Simple Factory is not a actual design pattern (not one of 23 design
  * patterns in GOF book). It is also called static factory method.
  * 
+ * Refer to http://howtodoinjava.com/2012/10/23/implementing-factory-design-pattern-in-java/
+ * 
  * @author Xi Chen
  * 
  */
