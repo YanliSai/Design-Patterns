@@ -16,28 +16,37 @@ package factory;
  * of a set of methods for producing products.
  */
 interface AbstractFactory {
-    void createPart1();
-
-    void createPart2();
+    ProductA1 createProductA1();
+    ProductA2 createProductA2();
+    ProductB1 createProductB1();
+    ProductB2 createProductB2();
 }
 
 /*
  * The concrete factories implement the different product families. The client
- * does not need to instantiate a product object (by using key workd "new"). It
+ * does not need to instantiate a product object (by using key work "new"). It
  * can use one of these factories.
  */
 class ConcreteFactory1 implements AbstractFactory {
 
     @Override
-    public void createPart1() {
-        // TODO Auto-generated method stub
-
+    public ProductA1 createProductA1() {
+        return new ProductA1();
     }
 
     @Override
-    public void createPart2() {
-        // TODO Auto-generated method stub
+    public ProductA2 createProductA2() {
+        return new ProductA2();
+    }
 
+    @Override
+    public ProductB1 createProductB1() {
+        return new ProductB1();
+    }
+
+    @Override
+    public ProductB2 createProductB2() {
+        return new ProductB2();
     }
 
 }
@@ -45,46 +54,52 @@ class ConcreteFactory1 implements AbstractFactory {
 class ConcreteFactory2 implements AbstractFactory {
 
     @Override
-    public void createPart1() {
-        // TODO Auto-generated method stub
-
+    public ProductA1 createProductA1() {
+        return new ProductA1();
     }
 
     @Override
-    public void createPart2() {
-        // TODO Auto-generated method stub
+    public ProductA2 createProductA2() {
+        return new ProductA2();
+    }
 
+    @Override
+    public ProductB1 createProductB1() {
+        return new ProductB1();
+    }
+
+    @Override
+    public ProductB2 createProductB2() {
+        return new ProductB2();
     }
 
 }
 
-abstract class ProductA {
-    String name;
-    
-    // Suppose the materials needed in prepare() comes from different factories.
-    abstract void prepare();
-    
-    void otherOperations() {
-        System.out.println("There are other same standard operations");
+// Product family. Each concrete factory can produce an entire set of products
+abstract class AbstractProductA { }
+
+class ProductA1 extends AbstractProductA { }
+
+class ProductA2 extends AbstractProductA { }
+
+abstract class AbstractProductB { }
+
+class ProductB1 extends AbstractProductB { }
+
+class ProductB2 extends AbstractProductB { }
+
+// Uses only interfaces declared by AbstractFactory and AbstractProduct classes
+class Client {
+    ConcreteFactory1 factory = null;
+    public Client(ConcreteFactory1 factory) {
+        this.factory = factory;
     }
-}
-
-class ProductA1 extends ProductA {
-
-    @Override
+    
+    // An example using factory methods to produce products
     void prepare() {
-        System.out.println("Preparing " + name);
-        
+        factory.createProductA1();
+        factory.createProductA2();
+        factory.createProductB1();
+        factory.createProductB2();
     }
-    
-}
-
-class ProductA2 extends ProductA {
-
-    @Override
-    void prepare() {
-        // TODO Auto-generated method stub
-
-    }
-    
 }
