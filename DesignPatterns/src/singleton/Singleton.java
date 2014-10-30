@@ -14,7 +14,7 @@ class Singleton {
      * By using it, when many threads are accessing the same object and one 
      * thread makes a change, the change will be updated to other threads.
      */
-    private volatile static Singleton instance;
+    private static volatile Singleton instance;
     
     private Singleton() {}
     
