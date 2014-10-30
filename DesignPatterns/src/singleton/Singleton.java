@@ -1,49 +1,6 @@
 package singleton;
 
 /**
- * This implementation is not thread safe
- * 
- * @author Xi Chen
- *
- */
-class Singleton1 {
-    private static Singleton1 instance;
-    
-    private Singleton1() {}
-    
-    public static Singleton1 getInstance() {
-        if (instance == null) {
-            return new Singleton1();
-        }
-        return instance;
-    }
-}
-
-/**
- * This implementation is thread safe, but not efficient as synchronization is
- * expensive
- * 
- * @author Xi Chen
- *
- */
-class Singleton2 {
-    private static Singleton2 instance;
-    
-    private Singleton2() {}
-    
-    /*
-     * "synchronized" key word forces every thread to wait its turn before
-     * it can enter the method 
-     */
-    public static synchronized Singleton2 getInstance() {
-        if (instance == null) {
-            return new Singleton2();
-        }
-        return instance;
-    }
-}
-
-/**
  * This implementation is thread safe. If the application always create an
  * instance, this one can be used.
  * 
@@ -87,6 +44,49 @@ class Singleton4 {
                     instance = new Singleton4();
                 }
             }
+        }
+        return instance;
+    }
+}
+
+/**
+ * This implementation is not thread safe
+ * 
+ * @author Xi Chen
+ *
+ */
+class Singleton1 {
+    private static Singleton1 instance;
+    
+    private Singleton1() {}
+    
+    public static Singleton1 getInstance() {
+        if (instance == null) {
+            return new Singleton1();
+        }
+        return instance;
+    }
+}
+
+/**
+ * This implementation is thread safe, but not efficient as synchronization is
+ * expensive
+ * 
+ * @author Xi Chen
+ *
+ */
+class Singleton2 {
+    private static Singleton2 instance;
+    
+    private Singleton2() {}
+    
+    /*
+     * "synchronized" key word forces every thread to wait its turn before
+     * it can enter the method 
+     */
+    public static synchronized Singleton2 getInstance() {
+        if (instance == null) {
+            return new Singleton2();
         }
         return instance;
     }
