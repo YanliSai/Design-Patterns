@@ -40,7 +40,7 @@ class Singleton {
 class Singleton {
     
     // JVM create the instance when the class is loaded. It guarantees thread safety
-    private static Singleton instance = new Singleton();
+    private static final Singleton instance = new Singleton();
     
     private Singleton() {}
     
