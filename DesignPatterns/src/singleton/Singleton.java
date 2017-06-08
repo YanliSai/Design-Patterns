@@ -67,7 +67,7 @@ class Singleton {
      */
     public static synchronized Singleton getInstance() {
         if (instance == null) {
-            return new Singleton();
+            instance = new Singleton();
         }
         return instance;
     }
@@ -86,7 +86,7 @@ class Singleton1 {
     
     public static Singleton1 getInstance() {
         if (instance == null) {
-            return new Singleton1();
+            instance new Singleton1();
         }
         return instance;
     }
